@@ -1,0 +1,9 @@
+services:
+  medium-db:
+    image: mysql:latest
+    container_name: medium-db
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: medium
+    ports:
+      - "3306:3306"
