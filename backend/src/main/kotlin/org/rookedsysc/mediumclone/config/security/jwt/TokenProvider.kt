@@ -23,9 +23,9 @@ import java.util.Date
 @Component
 class TokenProvider() {
     companion object : LogConfig {
-//        private const val ACCESS_TOKEN_EXPIRE_TIME_IN_MILLISECONDS: Long = 2 * 60 * 60 * 1000 // 2시간
+        //        private const val ACCESS_TOKEN_EXPIRE_TIME_IN_MILLISECONDS: Long = 2 * 60 * 60 * 1000 // 2시간
         // TODO: Prod에서는 시간 변경해줘야 함
-        private const val ACCESS_TOKEN_EXPIRE_TIME_IN_MILLISECONDS: Long = 10 * 1000 // 10초
+        private const val ACCESS_TOKEN_EXPIRE_TIME_IN_MILLISECONDS: Long = 30 * 60 * 1000 // 30분
         private const val REFRESH_TOKEN_EXPIRE_TIME_IN_MILLISECONDS: Long = 7 * 24 * 60 * 60 * 1000 // 7일
     }
 
