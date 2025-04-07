@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service
 @Service
 class PostCreateService(
     private val postRepository: PostRepository,
-    private val postConverter: PostConverter,
     private val tagRepository: TagRepository,
 ) {
 
@@ -18,12 +17,12 @@ class PostCreateService(
             tagRepository.findByName(tagName) ?: Tag(name = tagName)
         }.toMutableList()
 
-        val post: Post = postConverter.toEntity(user, command)
+        val post: Post = PostConverter.toEntity(user, command)
         post.tags = tags
 
         val savedPost: Post = postRepository.save(post)
 
-        return postConverter.toResponse(savedPost)
+        return PostConverter.toResponse(savedPost)
     }
 
 }
