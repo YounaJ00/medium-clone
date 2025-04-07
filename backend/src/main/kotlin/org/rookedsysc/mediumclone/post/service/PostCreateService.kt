@@ -1,5 +1,6 @@
-package org.rookedsysc.mediumclone.post
+package org.rookedsysc.mediumclone.post.service
 
+import org.rookedsysc.mediumclone.post.*
 import org.rookedsysc.mediumclone.tag.Tag
 import org.rookedsysc.mediumclone.tag.TagRepository
 import org.springframework.stereotype.Service

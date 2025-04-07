@@ -2,6 +2,7 @@ package org.rookedsysc.mediumclone.post
 
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
+import org.rookedsysc.mediumclone.post.service.PostCreateService
 import org.rookedsysc.mediumclone.user.User
 import org.rookedsysc.mediumclone.user.UserSession
 import org.springframework.web.bind.annotation.PostMapping
