@@ -15,7 +15,8 @@ import org.rookedsysc.mediumclone.config.security.enums.UserRole
     name = "user",
     indexes = [
         Index(name = "idx_user_name", columnList = "name"),
-        Index(name = "idx_user_email", columnList = "email")
+        Index(name = "idx_user_email", columnList = "email"),
+        Index(name = "idx_user_unique_email", columnList = "email", unique = true)
     ]
 )
 data class User(
