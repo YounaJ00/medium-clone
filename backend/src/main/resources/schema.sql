@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS user (
     profile_image_url VARCHAR(255),
     FULLTEXT INDEX idx_user_name (name),
     FULLTEXT INDEX idx_user_email (email),
+    UNIQUE INDEX idx_user_unique_email (email),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
