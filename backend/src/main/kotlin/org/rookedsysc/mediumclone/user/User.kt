@@ -5,10 +5,12 @@ import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
 import jakarta.persistence.Index
+import jakarta.persistence.OneToMany
 import jakarta.persistence.Table
 import org.rookedsysc.mediumclone.common.EntityBase
 import org.rookedsysc.mediumclone.config.security.enums.OAuth2Provider
 import org.rookedsysc.mediumclone.config.security.enums.UserRole
+import org.rookedsysc.mediumclone.post.Post
 
 @Entity
 @Table(
@@ -37,5 +39,8 @@ data class User(
 
     @Column(name = "profile_image_url")
     var profileImageUrl: String,
+
+    @OneToMany(mappedBy = "user")
+    var posts: MutableList<Post> = mutableListOf(),
 
     ) : EntityBase()

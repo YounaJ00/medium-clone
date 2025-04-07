@@ -25,7 +25,7 @@ class PostController(
         @UserSession user: User
     ): PostResponse {
         return postCreateService.create(
-            user.id, command
+            user, command
         )
     }
 }

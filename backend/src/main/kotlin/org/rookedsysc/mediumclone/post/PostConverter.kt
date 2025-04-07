@@ -1,14 +1,14 @@
 package org.rookedsysc.mediumclone.post
 
-import org.rookedsysc.mediumclone.tag.Tag
 import org.rookedsysc.mediumclone.tag.TagResponse
+import org.rookedsysc.mediumclone.user.User
 import org.springframework.stereotype.Component
 
 @Component
 class PostConverter {
-    fun toEntity(userId: Long, command: PostCreateCommand): Post {
+    fun toEntity(user: User, command: PostCreateCommand): Post {
         return Post(
-            userId = userId,
+            user = user,
             title = command.title,
             content = command.content,
         )
@@ -17,7 +17,7 @@ class PostConverter {
     fun toResponse(post: Post): PostResponse {
         return PostResponse(
             id = post.id,
-            userId = post.userId,
+            userId = post.user.id,
             title = post.title,
             content = post.content,
             tags = post.tags.map { TagResponse(it.name) }
