@@ -4,13 +4,20 @@ import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
+import jakarta.persistence.Index
 import jakarta.persistence.Table
 import org.rookedsysc.mediumclone.common.EntityBase
 import org.rookedsysc.mediumclone.config.security.enums.OAuth2Provider
 import org.rookedsysc.mediumclone.config.security.enums.UserRole
 
 @Entity
-@Table(name = "user")
+@Table(
+    name = "user",
+    indexes = [
+        Index(name = "idx_user_name", columnList = "name"),
+        Index(name = "idx_user_email", columnList = "email")
+    ]
+)
 data class User(
 
     var name: String,
@@ -30,4 +37,4 @@ data class User(
     @Column(name = "profile_image_url")
     var profileImageUrl: String,
 
-) : EntityBase()
+    ) : EntityBase()
