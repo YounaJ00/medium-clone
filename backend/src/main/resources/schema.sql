@@ -6,6 +6,8 @@ CREATE TABLE IF NOT EXISTS user (
     identifier VARCHAR(255),
     role VARCHAR(255) NOT NULL,
     profile_image_url VARCHAR(255),
+    FULLTEXT INDEX idx_user_name (name),
+    FULLTEXT INDEX idx_user_email (email),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
