@@ -2,7 +2,6 @@ package org.rookedsysc.mediumclone.user
 
 import org.rookedsysc.mediumclone.config.security.enums.UserRole
 import org.rookedsysc.mediumclone.config.security.model.OAuth2UserInfo
-import org.springframework.stereotype.Component
 import java.util.UUID
 
 class UserConverter {
@@ -35,8 +34,8 @@ class UserConverter {
             return entity
         }
 
-        fun toSimpleProfileDto(user: User): UserSimpleProfileDto {
-            return UserSimpleProfileDto(
+        fun toSimpleProfileResponse(user: User): UserSimpleProfileResponse {
+            return UserSimpleProfileResponse(
                 userId = user.id,
                 name = user.name,
                 profileImage = user.profileImageUrl,

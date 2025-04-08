@@ -2,6 +2,8 @@ package org.rookedsysc.mediumclone.post
 
 import org.rookedsysc.mediumclone.tag.TagResponse
 import org.rookedsysc.mediumclone.user.User
+import org.rookedsysc.mediumclone.user.UserConverter
+import org.rookedsysc.mediumclone.user.UserSimpleProfileResponse
 
 class PostConverter {
     companion object {
@@ -22,5 +24,20 @@ class PostConverter {
                 tags = post.tags.map { TagResponse(it.name) }
             )
         }
+
+        fun toListResponse(post: Post): PostListResponse {
+            val userSimpleProfileResponse: UserSimpleProfileResponse = UserConverter.toSimpleProfileResponse(
+                user = post.user
+            )
+            return PostListResponse(
+                id = post.id,
+                title = post.title,
+                content = post.content,
+                date = post.createdAt.toString(),
+                clap = post.clap,
+                userSimpleProfile = userSimpleProfileResponse
+            )
+        }
+
     }
 }
