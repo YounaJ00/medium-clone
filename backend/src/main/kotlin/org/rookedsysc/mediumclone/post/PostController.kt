@@ -51,6 +51,4 @@ class PostController(
             user, command
         )
     }
-
-
 }
