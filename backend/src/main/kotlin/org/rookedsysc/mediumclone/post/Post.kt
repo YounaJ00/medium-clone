@@ -24,7 +24,7 @@ data class Post(
     var content: String,
 
     @Column(nullable = false)
-    var clap: Int = 0,
+    var clap: Long = 0,
 
     @ManyToMany(cascade = [CascadeType.PERSIST])
     @JoinTable(
