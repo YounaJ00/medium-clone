@@ -25,7 +25,7 @@ class PostController(
     private val postListService: PostListService,
     private val postStaffPickService: PostStaffPickService
 ) {
-    @Operation(summary = "게시물 목록 조회", description = "게시물 목록을 조회합니다.")
+    @Operation(summary = "게시물 목록 조회")
     @GetMapping
     fun list(
         @RequestParam(defaultValue = "0") page: Int,
@@ -35,13 +35,13 @@ class PostController(
         return postListService.findAllBy(pageable)
     }
 
-    @Operation(summary = "Staff 추천", description = "Staff 추천")
+    @Operation(summary = "Staff 추천")
     @GetMapping("/staff")
     fun staff(): List<PostListResponse> {
         return postStaffPickService.get5StaffPicks()
     }
 
-    @Operation(summary = "새 게시물 생성", description = "새 게시물을 생성합니다.")
+    @Operation(summary = "새 게시물 생성")
     @PostMapping
     fun create(
         @RequestBody command: PostCreateCommand,
