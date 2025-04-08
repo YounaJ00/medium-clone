@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.rookedsysc.mediumclone.post.service.PostCreateService
 import org.rookedsysc.mediumclone.post.service.PostListService
+import org.rookedsysc.mediumclone.post.service.PostStaffPickService
 import org.rookedsysc.mediumclone.user.User
 import org.rookedsysc.mediumclone.user.UserSession
 import org.springframework.data.domain.PageRequest
@@ -21,7 +22,8 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api/posts")
 class PostController(
     private val postCreateService: PostCreateService,
-    private val postListService: PostListService
+    private val postListService: PostListService,
+    private val postStaffPickService: PostStaffPickService
 ) {
     @Operation(summary = "게시물 목록 조회", description = "게시물 목록을 조회합니다.")
     @GetMapping
@@ -31,6 +33,12 @@ class PostController(
     ): List<PostListResponse> {
         val pageable: Pageable = PageRequest.of(page, size)
         return postListService.findAllBy(pageable)
+    }
+
+    @Operation(summary = "Staff 추천", description = "Staff 추천")
+    @GetMapping("/staff")
+    fun staff(): List<PostListResponse> {
+        return postStaffPickService.get5StaffPicks()
     }
 
     @Operation(summary = "새 게시물 생성", description = "새 게시물을 생성합니다.")
@@ -43,5 +51,6 @@ class PostController(
             user, command
         )
     }
+
 
 }
