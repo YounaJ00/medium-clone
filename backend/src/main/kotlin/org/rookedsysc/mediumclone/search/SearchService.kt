@@ -4,7 +4,7 @@ import org.rookedsysc.mediumclone.post.Post
 import org.rookedsysc.mediumclone.post.PostRepository
 import org.rookedsysc.mediumclone.tag.Tag
 import org.rookedsysc.mediumclone.tag.TagRepository
-import org.rookedsysc.mediumclo햣 r
+import org.rookedsysc.mediumclone.user.User
 import org.rookedsysc.mediumclone.user.UserRepository
 import org.springframework.stereotype.Service
 

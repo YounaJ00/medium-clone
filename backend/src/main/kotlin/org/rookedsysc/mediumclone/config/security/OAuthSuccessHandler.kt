@@ -26,7 +26,6 @@ class OAuthSuccessHandler(
     private val httpCookieOAuth2AuthorizationRequestRepository: HttpCookieOAuth2AuthorizationRequestRepository,
     private val tokenProvider: TokenProvider,
     private val userService: UserService,
-    private val userConverter: UserConverter,
 ) : SimpleUrlAuthenticationSuccessHandler() {
     private val tokenDto: String = "tokenDto"
 
@@ -87,7 +86,7 @@ class OAuthSuccessHandler(
     private fun register(
         userInfo: OAuth2UserInfo,
     ): TokenDto {
-        val user: User = userService.register(userConverter.toEntity(userInfo))
+        val user: User = userService.register(UserConverter.toEntity(userInfo))
 
         val token: TokenDto = tokenProvider.generateToken(user)
 
