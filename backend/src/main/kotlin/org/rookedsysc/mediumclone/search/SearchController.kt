@@ -14,7 +14,7 @@ class SearchController(
 ) {
 
     @GetMapping
-    @Operation(summary = "검색", description = "키워드를 사용하여 사용자, 게시물 및 태그를 검색합니다.")
+    @Operation(summary = "키워드를 사용하여 사용자, 게시물 및 태그를 검색")
     fun search(
         @Parameter(description = "검색 키워드", example = "example keyword")
         @RequestParam(value = "keyword") keyword: String
