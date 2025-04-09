@@ -7,6 +7,7 @@ import jakarta.persistence.Enumerated
 import jakarta.persistence.Index
 import jakarta.persistence.OneToMany
 import jakarta.persistence.Table
+import org.rookedsysc.mediumclone.comment.Comment
 import org.rookedsysc.mediumclone.common.EntityBase
 import org.rookedsysc.mediumclone.config.security.enums.OAuth2Provider
 import org.rookedsysc.mediumclone.config.security.enums.UserRole
@@ -43,4 +44,7 @@ data class User(
     @OneToMany(mappedBy = "user")
     var posts: MutableList<Post> = mutableListOf(),
 
-    ) : EntityBase()
+    @OneToMany(mappedBy = "user")
+    var comments: MutableList<Comment> = mutableListOf()
+
+) : EntityBase()
