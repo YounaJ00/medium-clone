@@ -1,6 +1,7 @@
 package org.rookedsysc.mediumclone.post
 
 import jakarta.persistence.*
+import org.rookedsysc.mediumclone.comment.Comment
 import org.rookedsysc.mediumclone.common.EntityBase
 import org.rookedsysc.mediumclone.tag.Tag
 import org.rookedsysc.mediumclone.user.User
@@ -32,6 +33,9 @@ data class Post(
         joinColumns = [JoinColumn(name = "post_id")],
         inverseJoinColumns = [JoinColumn(name = "tag_id")]
     )
-    var tags: MutableList<Tag> = mutableListOf()
+    var tags: MutableList<Tag> = mutableListOf(),
+
+    @OneToMany(mappedBy = "post")
+    var comments: MutableList<Comment> = mutableListOf()
 
 ) : EntityBase()

@@ -2,10 +2,14 @@ package org.rookedsysc.mediumclone.post
 
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
+import org.rookedsysc.mediumclone.post.projection.PostListProjection
 import org.rookedsysc.mediumclone.post.service.PostCreateService
+import org.rookedsysc.mediumclone.post.service.PostDetailService
 import org.rookedsysc.mediumclone.post.service.PostListService
+import org.rookedsysc.mediumclone.post.service.PostStaffPickService
 import org.rookedsysc.mediumclone.user.User
 import org.rookedsysc.mediumclone.user.UserSession
+import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
 import org.springframework.web.bind.annotation.GetMapping
@@ -21,19 +25,35 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api/posts")
 class PostController(
     private val postCreateService: PostCreateService,
-    private val postListService: PostListService
+    private val postListService: PostListService,
+    private val postStaffPickService: PostStaffPickService,
+    private val postDetailService: PostDetailService
 ) {
-    @Operation(summary = "게시물 목록 조회", description = "게시물 목록을 조회합니다.")
+    @Operation(summary = "게시물 상세 조회")
+    @GetMapping("/{postId}")
+    fun detail(
+        @RequestParam postId: Long
+    ): PostDetailResponse {
+        return postDetailService.getPostDetail(postId)
+    }
+
+    @Operation(summary = "게시물 목록 조회")
     @GetMapping
     fun list(
-        @RequestParam(defaultValue = "0") page: Int,
+        @RequestParam(defaultValue = "1") page: Int,
         @RequestParam(defaultValue = "10") size: Int,
-    ): List<PostListResponse> {
-        val pageable: Pageable = PageRequest.of(page, size)
+    ): Page<PostListResponse> {
+        val pageable: Pageable = PageRequest.of(page - 1, size)
         return postListService.findAllBy(pageable)
     }
 
-    @Operation(summary = "새 게시물 생성", description = "새 게시물을 생성합니다.")
+    @Operation(summary = "Staff 추천")
+    @GetMapping("/staff")
+    fun staff(): List<PostListResponse> {
+        return postStaffPickService.get5StaffPicks()
+    }
+
+    @Operation(summary = "새 게시물 생성")
     @PostMapping
     fun create(
         @RequestBody command: PostCreateCommand,
@@ -43,5 +63,4 @@ class PostController(
             user, command
         )
     }
-
 }

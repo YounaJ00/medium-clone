@@ -1,14 +1,15 @@
 package org.rookedsysc.mediumclone.post
 
+import org.rookedsysc.mediumclone.comment.CommentListResponse
 import org.rookedsysc.mediumclone.user.UserSimpleProfileResponse
 
-data class PostListResponse(
+class PostDetailResponse(
     val id: Long,
     val title: String,
     val content: String,
     val date: String,
     val clap: Long,
-    var commentCount: Long = 0,
-    val userSimpleProfile: UserSimpleProfileResponse
+    val comments: List<CommentListResponse>,
+    val userSimpleProfileResponse: UserSimpleProfileResponse
 ) {
 }

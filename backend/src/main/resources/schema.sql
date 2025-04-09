@@ -38,3 +38,16 @@ CREATE TABLE IF NOT EXISTS post_tag (
     tag_id BIGINT NOT NULL,
     PRIMARY KEY (post_id, tag_id)
 );
+
+CREATE TABLE IF NOT EXISTS comment (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    post_id BIGINT NOT NULL,
+    user_id BIGINT NOT NULL,
+    content TEXT NOT NULL,
+    parent_id BIGINT,
+    clap BIGINT DEFAULT 0 NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    INDEX idx_post_id (post_id),
+    INDEX idx_user_id (user_id)
+);
