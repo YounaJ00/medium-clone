@@ -2,11 +2,13 @@ package org.rookedsysc.mediumclone.post
 
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
+import org.rookedsysc.mediumclone.post.projection.PostListProjection
 import org.rookedsysc.mediumclone.post.service.PostCreateService
 import org.rookedsysc.mediumclone.post.service.PostListService
 import org.rookedsysc.mediumclone.post.service.PostStaffPickService
 import org.rookedsysc.mediumclone.user.User
 import org.rookedsysc.mediumclone.user.UserSession
+import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
 import org.springframework.web.bind.annotation.GetMapping
@@ -28,10 +30,10 @@ class PostController(
     @Operation(summary = "게시물 목록 조회")
     @GetMapping
     fun list(
-        @RequestParam(defaultValue = "0") page: Int,
+        @RequestParam(defaultValue = "1") page: Int,
         @RequestParam(defaultValue = "10") size: Int,
-    ): List<PostListResponse> {
-        val pageable: Pageable = PageRequest.of(page, size)
+    ): Page<PostListResponse> {
+        val pageable: Pageable = PageRequest.of(page - 1, size)
         return postListService.findAllBy(pageable)
     }
 
