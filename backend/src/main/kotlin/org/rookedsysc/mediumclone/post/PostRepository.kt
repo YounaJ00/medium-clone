@@ -1,5 +1,7 @@
 package org.rookedsysc.mediumclone.post
 
+import org.rookedsysc.mediumclone.post.projection.PostListProjection
+import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
@@ -13,4 +15,21 @@ interface PostRepository : JpaRepository<Post, Long> {
     fun get5StaffPicks(): List<Post>
 
     fun findAllBy(pageable: Pageable): List<Post>
+
+    @Query(
+        """
+        SELECT p.id AS id,
+               p.title AS title,
+               p.content AS content,
+               p.createdAt AS date,
+               p.clap AS clap,
+               SIZE(p.comments) AS commentCount,
+               u.id AS userId,
+               u.name AS name,
+               u.profileImageUrl AS profileImage
+        FROM Post p
+        JOIN p.user u
+        """
+    )
+    fun findAllPostListProjections(pageable: Pageable): Page<PostListProjection>
 }
