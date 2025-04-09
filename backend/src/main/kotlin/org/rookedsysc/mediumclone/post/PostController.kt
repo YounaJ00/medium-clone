@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.rookedsysc.mediumclone.post.projection.PostListProjection
 import org.rookedsysc.mediumclone.post.service.PostCreateService
+import org.rookedsysc.mediumclone.post.service.PostDetailService
 import org.rookedsysc.mediumclone.post.service.PostListService
 import org.rookedsysc.mediumclone.post.service.PostStaffPickService
 import org.rookedsysc.mediumclone.user.User
@@ -25,8 +26,17 @@ import org.springframework.web.bind.annotation.RestController
 class PostController(
     private val postCreateService: PostCreateService,
     private val postListService: PostListService,
-    private val postStaffPickService: PostStaffPickService
+    private val postStaffPickService: PostStaffPickService,
+    private val postDetailService: PostDetailService
 ) {
+    @Operation(summary = "게시물 상세 조회")
+    @GetMapping("/{postId}")
+    fun detail(
+        @RequestParam postId: Long
+    ): PostDetailResponse {
+        return postDetailService.getPostDetail(postId)
+    }
+
     @Operation(summary = "게시물 목록 조회")
     @GetMapping
     fun list(

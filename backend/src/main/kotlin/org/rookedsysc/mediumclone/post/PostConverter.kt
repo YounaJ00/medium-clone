@@ -1,5 +1,7 @@
 package org.rookedsysc.mediumclone.post
 
+import org.rookedsysc.mediumclone.comment.CommentConverter
+import org.rookedsysc.mediumclone.comment.CommentListResponse
 import org.rookedsysc.mediumclone.common.utils.DateTimeUtils
 import org.rookedsysc.mediumclone.post.projection.PostListProjection
 import org.rookedsysc.mediumclone.tag.TagResponse
@@ -24,6 +26,24 @@ class PostConverter {
                 title = post.title,
                 content = post.content,
                 tags = post.tags.map { TagResponse(it.name) }
+            )
+        }
+
+        fun toDetailResponse(post: Post): PostDetailResponse {
+            val userSimpleProfileResponse: UserSimpleProfileResponse = UserConverter.toSimpleProfileResponse(
+                user = post.user
+            )
+            val comments: List<CommentListResponse> = post.comments.map { comment ->
+                CommentConverter.toResponse(comment)
+            }
+            return PostDetailResponse(
+                id = post.id,
+                title = post.title,
+                content = post.content,
+                date = DateTimeUtils.timeAgo(post.createdAt),
+                clap = post.clap,
+                comments = comments,
+                userSimpleProfileResponse = userSimpleProfileResponse,
             )
         }
 
@@ -57,6 +77,5 @@ class PostConverter {
                 commentCount = post.getCommentCount(),
             )
         }
-
     }
 }
