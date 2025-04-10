@@ -21,7 +21,6 @@ import {
   modalContent,
   switchText,
   modalTitle,
-  subText,
   socialButton,
   createOne,
 } from "../styles/home.css";
@@ -104,14 +103,9 @@ const Home = () => {
             </div>
             <div className={modalContent}>
               <h2 className={modalTitle}>
-                {" "}
-                {/* 🔴 제목 스타일 클래스 적용 */}
-                {isSignUp ? "Join Medium" : "Welcome back"}
+                {isSignUp ? "Join Medium." : "Welcome back."}
               </h2>
-              <p className={subText}> </p>
               <button className={socialButton}>
-                {" "}
-                {/* 🔴 Google 로그인 버튼 */}
                 <img
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
                   alt="Google"
@@ -119,47 +113,57 @@ const Home = () => {
                   height="20"
                   style={{ marginRight: "8px" }}
                 />
-                Sign in with Google
+                {isSignUp ? "Sign up with Google" : "Sign in with Google"}
               </button>
 
               <div className={switchText}>
                 {isSignUp ? (
                   <>
-                    Already have an account?
+                    Already have an account?{" "}
                     <button
                       className={createOne}
                       onClick={() => setIsSignUp(false)}
                     >
-                      {" "}
                       Sign in
                     </button>
-                    <br />
-                      Click "{title.includes("back") ? "Sign in" : "Sign up"}"
-                      to agree to Medium's <a href="#">Terms of Service</a> and acknowledge that <br />
+                    <div
+                      style={{
+                        fontSize: "13px",
+                        color: "rgb(117, 117, 117)",
+                        maxWidth: "320px",
+                        lineHeight: "20px",
+                      }}
+                    >
+                      Click "Sign up" to agree to Medium's{" "}
+                      <a href="#">Terms of Service</a> and acknowledge that{" "}
                       Medium's <a href="#">Privacy Policy</a> applies to you.
+                    </div>
                   </>
                 ) : (
                   <>
-                    No account?
+                    No account?{" "}
                     <button
                       className={createOne}
                       onClick={() => setIsSignUp(true)}
                     >
-                      {" "}
                       Create one
                     </button>
-                    <p>
-                      {title.includes("back") && (
-                        <>
-                          Forgot email or trouble signing in?{" "}
-                          <a href="#">Get help</a>
-                          <br />
-                        </>
-                      )}
-                      Click "{title.includes("back") ? "Sign in" : "Sign up"}"
-                      to agree to Medium's <a href="#">Terms of Service</a> and acknowledge that <br />
+                    <div
+                      style={{
+                        fontSize: "13px",
+                        color: "rgb(117, 117, 117)",
+                        maxWidth: "320px",
+                        lineHeight: "20px",
+                      }}
+                    >
+                      Forgot email or trouble signing in?{" "}
+                      <a href="#">Get help</a>
+                      <br />
+                      <br />
+                      Click "Sign in" to agree to Medium's{" "}
+                      <a href="#">Terms of Service</a> and acknowledge that{" "}
                       Medium's <a href="#">Privacy Policy</a> applies to you.
-                    </p>
+                    </div>
                   </>
                 )}
               </div>

@@ -127,132 +127,115 @@ export const modalBackdrop = style({
   left: 0,
   right: 0,
   bottom: 0,
-  backgroundColor: "rgba(0, 0, 0, 0.6)", // 🔴
+  backgroundColor: "rgba(255, 255, 255, 0.95)",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   zIndex: 1000,
 });
 
-export const modalContent = style({
-  display: "flex",
-  flexDirection: "column",
-  gap: "1.5rem",
-  alignItems: "stretch",
-});
-
-// 🔴 모달 헤더: 제목과 닫기 버튼 감싸는 영역
-export const modalHeader = style({
-  position: "absolute",
-  top: "16px",
-  right: "16px",
-});
-
 export const modalContainer = style({
   backgroundColor: "#fff",
-  borderRadius: "12px",
-  padding: "4rem 2rem", // 좌우 여백 줄이고 반응형 대응
-  width: "90vw",         // 화면 너비 90%로 반응형 설정
-  maxWidth: "500px",     // 최대 너비 설정
-  boxShadow: "0 0 20px rgba(0,0,0,0.25)",
+  padding: "2rem",
+  width: "90vw",
+  maxWidth: "800px",
   position: "relative",
   display: "flex",
   flexDirection: "column",
-  gap: "1.5rem",      
+  alignItems: "center",
+  gap: "1.5rem",
+});
+
+export const modalHeader = style({
+  position: "absolute",
+  top: "12px",
+  right: "12px",
+  zIndex: 1,
 });
 
 export const closeButton = style({
   background: "none",
   border: "none",
-  fontSize: "20px",
+  fontSize: "16px",
   cursor: "pointer",
-  color: "#666",
+  color: "#6B6B6B",
+  padding: "8px",
   ":hover": {
     color: "#000",
   },
 });
 
-export const modalTitle = style({
-  fontSize: "1.5rem",
-  fontWeight: "bold",
-  marginBottom: "1rem",
-  textAlign: "center",
-  color: "#000",
-});
-
-export const modalInput = style({
-  display: "block",
+export const modalContent = style({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
   width: "100%",
-  padding: "0.75rem",
-  marginBottom: "1rem",
-  borderRadius: "6px",
-  border: "1px solid #ccc",
-  fontSize: "1rem",
+  maxWidth: "400px",
+  gap: "32px",
 });
 
-
-export const switchText = style({
-  fontSize: "0.9rem",
+export const modalTitle = style({
+  fontSize: "28px",
+  lineHeight: "36px",
+  fontWeight: 400,
+  fontFamily: "gt-super, Georgia, Cambria, Times New Roman, Times, serif",
+  color: "rgb(36, 36, 36)",
   textAlign: "center",
-  marginTop: "0.5rem",
-  color: "#555",
-  // selectors: {
-  //   // "& button": {
-  //   //   marginLeft: "4px",
-  //   //   background: "none",
-  //   //   border: "none",
-  //   //   color: "#1a8917",
-  //   //   cursor: "pointer",
-  //   //   fontWeight: "bold",
-  //   //   ":hover": {
-  //   //     textDecoration: "underline",
-  //   //   },
-  //   // },
-  // },
+  margin: 0,
 });
 
-
-// 🔴 소셜 로그인 버튼 스타일
 export const socialButton = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  gap: "0.5rem",
-  padding: "0.75rem 1rem",
+  width: "100%",
+  padding: "8px 16px",
   backgroundColor: "#fff",
-  border: "1px solid #ccc",
-  borderRadius: "50px",
-  fontSize: "1rem",
-  fontWeight: 500,
-  color: "black",
+  border: "1px solid rgb(242, 242, 242)",
+  borderRadius: "99em",
+  fontSize: "14px",
+  fontWeight: 400,
+  fontFamily: "sohne, Helvetica Neue, Helvetica, Arial, sans-serif",
+  color: "rgb(41, 41, 41)",
   cursor: "pointer",
-  transition: "background 0.2s",
+  transition: "background-color 0.2s, border-color 0.2s",
+  boxShadow: "rgba(0, 0, 0, 0.02) 0px 1px 3px",
+  ":hover": {
+    borderColor: "rgb(168, 168, 168)",
+  },
 });
 
-
-// 🔴 서브텍스트 스타일
-export const subText = style({
+export const switchText = style({
+  fontSize: "14px",
+  color: "rgb(41, 41, 41)",
   textAlign: "center",
-  fontSize: "0.95rem",
-  color: "#666",
-  marginBottom: "1rem",
-  lineHeight: 1.4,
-  whiteSpace: "normal",   // 여러 줄 가능하게 하되
-  maxWidth: "100%",       // 너비 꽉 채워 한 줄로 보이게
-});
-
-
-export const createOne = style({
-  color: "#22c55e", // green-500
-  fontWeight: 600,
-  cursor: "pointer",
-  backgroundColor: "transparent",
-  border: "none",
-  fontSize: "1rem",
-  transition: "background 0.2s",
+  display: "flex",
+  flexDirection: "column",
+  gap: "24px",
+  alignItems: "center",
+  fontFamily: "sohne, Helvetica Neue, Helvetica, Arial, sans-serif",
   selectors: {
-    "&:hover": {
+    "& a": {
+      color: "rgb(26, 137, 23)",
+      textDecoration: "none",
+    },
+    "& a:hover": {
       textDecoration: "underline",
     },
+  },
+});
+
+export const createOne = style({
+  color: "rgb(26, 137, 23)",
+  background: "none",
+  border: "none",
+  padding: 0,
+  margin: 0,
+  fontSize: "14px",
+  fontWeight: 400,
+  fontFamily: "sohne, Helvetica Neue, Helvetica, Arial, sans-serif",
+  cursor: "pointer",
+  ":hover": {
+    textDecoration: "underline",
   },
 });
