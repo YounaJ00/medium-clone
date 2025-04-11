@@ -304,10 +304,10 @@ export default function Main() {
                   />
                   <span className={authorName}>{articleItem.author.name}</span>
                 </div>
-                <div className={articleLink} role="button" tabIndex={0}>
+                <Link to={`/article/${index + 1}`} className={articleLink}>
                   <h2 className={articleTitle}>{articleItem.title}</h2>
                   <p className={articlePreview}>{articleItem.preview}</p>
-                </div>
+                </Link>
                 <div className={articleFooter}>
                   <div className={readingTime}>
                     <span>
@@ -395,11 +395,13 @@ export default function Main() {
                 </div>
               </div>
               <div className={articleLink} role="button" tabIndex={0}>
-                <img
-                  src={articleItem.image}
-                  alt={articleItem.title}
-                  className={articleImage}
-                />
+                <Link to={`/article/${index + 1}`} className={articleLink}>
+                  <img
+                    src={articleItem.image}
+                    alt={articleItem.title}
+                    className={articleImage}
+                  />
+                </Link>
               </div>
             </div>
           ))}

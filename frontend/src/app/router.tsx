@@ -34,7 +34,7 @@ const createPostRoute = createRoute({
 });
 const detailRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: "/detail",
+  path: "/detail/$articleId",
   component: Detail,
 });
 const publishRoute = createRoute({
