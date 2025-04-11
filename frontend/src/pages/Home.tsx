@@ -1,5 +1,6 @@
 // src/pages/Home.tsx
 import { useState } from "react";
+import { useNavigate } from "@tanstack/react-router";
 import {
   homeWrapper,
   navBar,
@@ -28,10 +29,15 @@ import {
 const Home = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
+  const navigate = useNavigate();
 
   const closeModal = () => {
     setModalOpen(false);
     setIsSignUp(false);
+  };
+
+  const handleStartReading = () => {
+    navigate({ to: "/main" });
   };
 
   return (
@@ -48,6 +54,7 @@ const Home = () => {
           <button
             className={navButton}
             style={{ backgroundColor: "#000", color: "#fff" }}
+            onClick={handleStartReading}
           >
             Get started
           </button>
@@ -62,7 +69,9 @@ const Home = () => {
         <p className={subtitle}>
           A place to read, write, and deepen your understanding
         </p>
-        <button className={startButton}>Start reading</button>
+        <button className={startButton} onClick={handleStartReading}>
+          Start reading
+        </button>
       </div>
 
       <div className={rightBox}>
