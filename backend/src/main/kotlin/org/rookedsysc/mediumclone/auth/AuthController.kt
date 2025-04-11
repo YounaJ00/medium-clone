@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
+@io.swagger.v3.oas.annotations.tags.Tag(name = "Auth API")
 @RestController
 @RequestMapping("/open-api/auth")
 class AuthController(
