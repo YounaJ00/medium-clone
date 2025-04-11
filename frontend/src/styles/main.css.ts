@@ -6,7 +6,6 @@ export const mainContainer = style({
   minHeight: "100vh",
   backgroundColor: "#fff",
   width: "100%",
-  maxWidth: "100%",
   position: "relative",
 });
 
