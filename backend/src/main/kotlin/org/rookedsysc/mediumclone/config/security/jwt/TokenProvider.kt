@@ -98,6 +98,12 @@ class TokenProvider() {
         return createTokenDto(claims)
     }
 
+    fun generateTokenByRefreshToken(refreshToken: String): TokenDto {
+        validateToken(refreshToken, TokenType.REFRESH)
+        val tokenInfo = getTokenInfo(refreshToken)
+        return generateToken(tokenInfo)
+    }
+
     private fun createTokenDto(claims: Map<String, String>): TokenDto {
         val accessClaims = HashMap(claims)
         val refreshClaims = HashMap(claims)
