@@ -27,6 +27,8 @@ import {
 } from "../styles/publish.css";
 
 export default function Publish() {
+
+  
   return (
     <div className={publishContainer}>
       <div className={containerWrapper}>
@@ -57,11 +59,10 @@ export default function Publish() {
           </div>
         </div>
 
+        <div className={rightContainer}>  
         <Link to="/createpost" className={closeButton}>
             ×
         </Link>
-
-        <div className={rightContainer}>  
           <div>
             <p className={publishingToText}>
               Publishing to: <span className={publishingName}>Rookedysc</span>

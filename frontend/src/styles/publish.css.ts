@@ -2,10 +2,10 @@ import { style } from "@vanilla-extract/css";
 
 export const publishContainer = style({
   width: "100vw",
+  height: "100vh",
   display: "flex",
   backgroundColor: "#FFFFFF",
-  minHeight: "100vh",
-  paddingBottom: "80px",
+  overflow: "hidden",
 });
 
 export const containerWrapper = style({
@@ -22,7 +22,6 @@ export const leftContainer = style({
   flex: "1",
   width: "390px",
   padding: "32px",
-  border: "1px solid rgb(242, 242, 242)",
   borderRadius: "4px",
   backgroundColor: "#FFFFFF",
 });
@@ -30,7 +29,6 @@ export const leftContainer = style({
 export const rightContainer = style({
   width: "420px",
   padding: "12px",
-  border: "1px solid rgb(242, 242, 242)",
   borderRadius: "4px",
   backgroundColor: "#FFFFFF",
   position: "relative",
@@ -68,14 +66,12 @@ const postTextContent = {
     borderBottom: "1px solid rgb(223, 223, 223)",
     backgroundColor: "transparent",
     outline: "none",
-    color: "rgb(41, 41, 41)",
 };
 
 export const postText = style({
   ...postTextContent,
   fontSize: "18px",
   fontWeight: 700,
-  
 });
 
 export const postContent = style({
@@ -165,8 +161,8 @@ export const scheduleLaterButton = style({
 
 export const closeButton = style({
   position: "absolute",
-  top: "130px",
-  right: "380px",
+  top: "1px",
+  right: "5px",
   background: "none",
   border: "none",
   fontSize: "29px",
