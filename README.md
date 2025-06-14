@@ -2,6 +2,22 @@
 
 React 학습을 위한 Medium Clone Project
 
+## How to start
+
+- **BACKEND**: root 폴더에서 **env** 작성
+
+```console
+JWT_SECRET=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+```
+
+```console
+cd backend
+docker compose up -d 
+./gradlew build
+```
+
 ## Frontend
 
 - lang: TypeScript, React,
