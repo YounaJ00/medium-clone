@@ -33,11 +33,15 @@ class PostConverter {
             val userSimpleProfileResponse: UserSimpleProfileResponse = UserConverter.toSimpleProfileResponse(
                 user = post.user
             )
+            val needToRead: String = "${post.content.length / 100} minutes to read"
             return PostDetailResponse(
                 id = post.id,
                 title = post.title,
                 content = post.content,
-                author = userSimpleProfileResponse
+                author = userSimpleProfileResponse,
+                clap = post.clap,
+                createdAt = post.createdAt,
+                needToRead = needToRead
             )
         }
 
@@ -51,6 +55,7 @@ class PostConverter {
                 content = post.content,
                 date = DateTimeUtils.timeAgo(post.createdAt),
                 clap = post.clap,
+                commentCount = post.comments.size.toLong(),
                 userSimpleProfile = userSimpleProfileResponse,
             )
         }

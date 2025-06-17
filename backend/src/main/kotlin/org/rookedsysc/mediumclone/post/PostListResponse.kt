@@ -8,7 +8,7 @@ data class PostListResponse(
     val content: String,
     val date: String,
     val clap: Long,
-    var commentCount: Long = 0,
+    var commentCount: Long,
     val userSimpleProfile: UserSimpleProfileResponse
 ) {
 }
