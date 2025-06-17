@@ -15,7 +15,7 @@ GOOGLE_CLIENT_SECRET=
 ```console
 cd backend
 docker compose up -d 
-./gradlew build
+./gradlew bootRun
 ```
 
 ## Frontend
