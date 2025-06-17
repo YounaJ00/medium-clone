@@ -2,6 +2,7 @@ package org.rookedsysc.mediumclone.post
 
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
+import org.rookedsysc.mediumclone.common.PageResponse
 import org.rookedsysc.mediumclone.post.projection.PostListProjection
 import org.rookedsysc.mediumclone.post.service.PostCreateService
 import org.rookedsysc.mediumclone.post.service.PostDetailService
@@ -42,7 +43,7 @@ class PostController(
     fun list(
         @RequestParam(defaultValue = "1") page: Int,
         @RequestParam(defaultValue = "10") size: Int,
-    ): Page<PostListResponse> {
+    ): PageResponse<PostListResponse> {
         val pageable: Pageable = PageRequest.of(page - 1, size)
         return postListService.findAllBy(pageable)
     }
