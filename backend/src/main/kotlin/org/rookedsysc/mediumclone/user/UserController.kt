@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api/users")
 class UserController(
     private val recommendedUserService: RecommendedUserService,
-    private val userDeleteService: UserDeleteService
+    private val userMeService: UserMeService,
+    private val userDeleteService: UserDeleteService,
 ) {
     @Operation(summary = "추천 유저 조회")
     @GetMapping
@@ -19,9 +20,16 @@ class UserController(
         return recommendedUserService.findRandomUsers()
     }
 
+    @Operation(summary = "내 정보 조회")
+    @GetMapping("/me")
+    fun get(@UserSession user: User): UserMeResponse {
+        return userMeService.get(user)
+    }
+
     @Operation(summary = "회원 탈퇴(Access Token만 보내면 알아서 User 추출해서 탈퇴처리)")
     @DeleteMapping
     fun deleteUser(@UserSession user: User) {
         userDeleteService.deleteUser(user)
     }
+
 }
