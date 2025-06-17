@@ -7,12 +7,8 @@ class UserMeService(
     private val userRepository: UserRepository
 ) {
 
-    fun get(user: User) : UserMeResponse {
-        return UserMeResponse(
-            name = user.name,
-            email = user.email,
-            profileUrl = user.profileImageUrl
-        )
+    fun get(user: User) : UserSimpleProfileResponse {
+        return UserConverter.toSimpleProfileResponse(user)
     }
 
 }

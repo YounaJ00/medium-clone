@@ -7,9 +7,6 @@ class PostDetailResponse(
     val id: Long,
     val title: String,
     val content: String,
-    val date: String,
-    val clap: Long,
-    val comments: List<CommentListResponse>,
-    val userSimpleProfileResponse: UserSimpleProfileResponse
+    val author: UserSimpleProfileResponse
 ) {
 }

@@ -22,7 +22,7 @@ class UserController(
 
     @Operation(summary = "내 정보 조회")
     @GetMapping("/me")
-    fun get(@UserSession user: User): UserMeResponse {
+    fun get(@UserSession user: User): UserSimpleProfileResponse{
         return userMeService.get(user)
     }
 

@@ -33,17 +33,11 @@ class PostConverter {
             val userSimpleProfileResponse: UserSimpleProfileResponse = UserConverter.toSimpleProfileResponse(
                 user = post.user
             )
-            val comments: List<CommentListResponse> = post.comments.map { comment ->
-                CommentConverter.toResponse(comment)
-            }
             return PostDetailResponse(
                 id = post.id,
                 title = post.title,
                 content = post.content,
-                date = DateTimeUtils.timeAgo(post.createdAt),
-                clap = post.clap,
-                comments = comments,
-                userSimpleProfileResponse = userSimpleProfileResponse,
+                author = userSimpleProfileResponse
             )
         }
 
