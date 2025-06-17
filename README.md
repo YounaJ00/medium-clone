@@ -2,6 +2,10 @@
 
 React 학습을 위한 Medium Clone Project
 
+## Design + API Spec
+
+Creatie 디자인 파일 링크: [Creatie](https://creatie.ai/goto/KoKTBmcL?page_id=5:48&file=154034192374011)
+
 ## How to start
 
 - **BACKEND**: root 폴더에서 **env** 작성
