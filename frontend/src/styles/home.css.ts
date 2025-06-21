@@ -205,6 +205,12 @@ export const socialButton = style({
   },
 });
 
+export const googleIcon = style({
+  width: 20,
+  height: 20,
+  marginRight: 8,
+});
+
 export const switchText = style({
   fontSize: "14px",
   color: "rgb(41, 41, 41)",
@@ -214,15 +220,15 @@ export const switchText = style({
   gap: "24px",
   alignItems: "center",
   fontFamily: "sohne, Helvetica Neue, Helvetica, Arial, sans-serif",
-  selectors: {
-    "& a": {
-      color: "rgb(26, 137, 23)",
-      textDecoration: "none",
-    },
-    "& a:hover": {
-      textDecoration: "underline",
-    },
-  },
+  // selectors: {
+  //   "& a": {
+  //     color: "rgb(26, 137, 23)",
+  //     textDecoration: "none",
+  //   },
+  //   "& a:hover": {
+  //     textDecoration: "underline",
+  //   },
+  // },
 });
 
 export const createOne = style({
@@ -239,3 +245,10 @@ export const createOne = style({
     textDecoration: "underline",
   },
 });
+
+// export const term = style({
+//   fontSize: 13,
+//   color: "rgb(117, 117, 117)",
+//   // maxWidth: 320,s
+//   lineHeight: 20,
+// })
