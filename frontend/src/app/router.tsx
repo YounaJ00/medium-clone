@@ -6,12 +6,11 @@ import {
   Outlet,
 } from "@tanstack/react-router";
 import Home from "../pages/Home";
-import Main from "../pages/Main";
+import Post from "../pages/Post";
 import CreatePost from "../pages/CreatePost";
 import Detail from "../pages/Detail";
 import Publish from "../pages/Publish";
-// import SignIn from "../pages/SignIn";
-// import SignUp from "../pages/SignUp";
+import OAuthCallback from "../pages/OAucthCallback";
 
 const rootRoute = createRootRoute({
   component: () => <Outlet />,
@@ -22,10 +21,10 @@ const homeRoute = createRoute({
   path: "/",
   component: Home,
 });
-const mainRoute = createRoute({
+const postRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: "/main",
-  component: Main,
+  path: "/post",
+  component: Post,
 });
 const createPostRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -42,17 +41,20 @@ const publishRoute = createRoute({
   path: "/publish",
   component: Publish,
 });
-// const signInRoute = createRoute({getParentRoute: () => rootRoute, path: '/signin', component: SignIn})
-// const signUpRoute = createRoute({getParentRoute: () => rootRoute, path: '/signup', component: SignUp})
+
+const oauthCallbackRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/oauth/callback",
+  component: OAuthCallback,
+});
 
 const routeTree = rootRoute.addChildren([
   homeRoute,
-  mainRoute,
+  postRoute,
   createPostRoute,
   detailRoute,
   publishRoute,
-  // signInRoute,
-  // signUpRoute,
+  oauthCallbackRoute,
 ]);
 
 export const router = createRouter({ routeTree });
