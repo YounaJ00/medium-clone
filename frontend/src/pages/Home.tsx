@@ -1,30 +1,14 @@
 // src/pages/Home.tsx
 import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import {
-  homeWrapper,
-  navBar,
-  navLeft,
-  navRight,
-  logo,
-  navButton,
-  leftBox,
-  title,
-  subtitle,
-  startButton,
-  rightBox,
-  footer,
-  footerLink,
-  modalBackdrop,
-  modalContainer,
-  modalHeader,
-  closeButton,
-  modalContent,
-  switchText,
-  modalTitle,
-  socialButton,
-  createOne,
-} from "../styles/home.css";
+import * as styles from "../styles/home.css";
+import { GoogleICon } from "../assets";
+
+const BASE_URL = "http://localhost:8080/oauth2/authorization/google";
+const REDIRECT_URI = encodeURIComponent("http://localhost:5173/oauth/callback");
+
+const googleSignIn = `${BASE_URL}?mode=login&redirect_uri=${REDIRECT_URI}`;
+const googleSignUp = `${BASE_URL}?mode=register&redirect_uri=${REDIRECT_URI}`;
 
 const Home = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -41,18 +25,21 @@ const Home = () => {
   };
 
   return (
-    <div className={homeWrapper}>
-      <nav className={navBar}>
-        <div className={navLeft}>
-          <span className={logo}>Medium</span>
+    <div className={styles.homeWrapper}>
+      <nav className={styles.navBar}>
+        <div className={styles.navLeft}>
+          <span className={styles.logo}>Medium</span>
         </div>
-        <div className={navRight}>
-          <button className={navButton} onClick={() => setModalOpen(true)}>
+        <div className={styles.navRight}>
+          <button
+            className={styles.navButton}
+            onClick={() => setModalOpen(true)}
+          >
             {" "}
             Sign in{" "}
           </button>
           <button
-            className={navButton}
+            className={styles.navButton}
             style={{ backgroundColor: "#000", color: "#fff" }}
             onClick={handleStartReading}
           >
@@ -61,20 +48,20 @@ const Home = () => {
         </div>
       </nav>
 
-      <div className={leftBox}>
-        <h1 className={title}>
+      <div className={styles.leftBox}>
+        <h1 className={styles.title}>
           Human <br />
           stories & ideas
         </h1>
-        <p className={subtitle}>
+        <p className={styles.subtitle}>
           A place to read, write, and deepen your understanding
         </p>
-        <button className={startButton} onClick={handleStartReading}>
+        <button className={styles.startButton} onClick={handleStartReading}>
           Start reading
         </button>
       </div>
 
-      <div className={rightBox}>
+      <div className={styles.rightBox}>
         <img
           src="https://miro.medium.com/v2/format:webp/4*SdjkdS98aKH76I8eD0_qjw.png"
           alt="flower"
@@ -83,7 +70,7 @@ const Home = () => {
         />
       </div>
 
-      <div className={footer}>
+      <div className={styles.footer}>
         {[
           "Help",
           "Status",
@@ -96,41 +83,45 @@ const Home = () => {
           "Terms",
           "Text to speech",
         ].map((text) => (
-          <a key={text} href="#" className={footerLink}>
+          <a key={text} href="#" className={styles.footerLink}>
             {text}
           </a>
         ))}
       </div>
 
       {isModalOpen && (
-        <div className={modalBackdrop} onClick={closeModal}>
-          <div className={modalContainer} onClick={(e) => e.stopPropagation()}>
-            <div className={modalHeader}>
-              <button className={closeButton} onClick={closeModal}>
+        <div className={styles.modalBackdrop} onClick={closeModal}>
+          <div
+            className={styles.modalContainer}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className={styles.modalHeader}>
+              <button className={styles.closeButton} onClick={closeModal}>
                 ✕
               </button>
             </div>
-            <div className={modalContent}>
-              <h2 className={modalTitle}>
+            <div className={styles.modalContent}>
+              <h2 className={styles.modalTitle}>
                 {isSignUp ? "Join Medium." : "Welcome back."}
               </h2>
-              <button className={socialButton}>
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
-                  alt="Google"
-                  width="20"
-                  height="20"
-                  style={{ marginRight: "8px" }}
-                />
+
+              <button
+                className={styles.socialButton}
+                onClick={() =>
+                  (window.location.href = isSignUp
+                    ? googleSignUp
+                    : googleSignIn)
+                }
+              >
+                <GoogleICon className={styles.googleIcon} />
                 {isSignUp ? "Sign up with Google" : "Sign in with Google"}
               </button>
-
-              <div className={switchText}>
+              <div className={styles.switchText}>
                 {isSignUp ? (
                   <>
                     Already have an account?{" "}
                     <button
-                      className={createOne}
+                      className={styles.createOne}
                       onClick={() => setIsSignUp(false)}
                     >
                       Sign in
@@ -152,7 +143,7 @@ const Home = () => {
                   <>
                     No account?{" "}
                     <button
-                      className={createOne}
+                      className={styles.createOne}
                       onClick={() => setIsSignUp(true)}
                     >
                       Create one
