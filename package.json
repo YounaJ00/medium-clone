@@ -1,9 +1,13 @@
 {
   "devDependencies": {
+    "@vitejs/plugin-react-swc": "^3.10.2",
     "typescript": "^5.8.3",
+    "vite-plugin-svgr": "^4.3.0",
     "vite-tsconfig-paths": "^5.1.4"
   },
   "dependencies": {
-    "@tanstack/react-router": "^1.115.0"
+    "@tanstack/react-router": "^1.115.0",
+    "ky": "^1.8.1",
+    "zod": "^3.25.67"
   }
 }
